@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 
 app.get("/", (req, res, next) => {
-    res.send("Cobra Kind API");
+    res.send("Cobra Kind of API");
 });
 
 app.get("/categories", (req, res, next) => {

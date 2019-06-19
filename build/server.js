@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = express_1.default();
 app.get("/", (req, res, next) => {
-    res.send("Cobra Kind API");
+    res.send("Cobra Kind of API");
 });
 app.get("/categories", (req, res, next) => {
     res.send("Get a list of Categories...");
