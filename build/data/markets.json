@@ -1,0 +1,32 @@
+[
+    {
+        "categoryID": "id-0",
+        "marketName": "Pinball Machines",
+        "marketImg": "xyz"
+    },
+    {
+        "categoryID": "id-0",
+        "marketName": "Pop Vinyl",
+        "marketImg": "xyz"
+    },
+    {
+        "categoryID": "id-0",
+        "marketName": "Star Wars Figures",
+        "marketImg": "xyz"
+    },
+    {
+        "categoryID": "id-0",
+        "marketName": "Video Games",
+        "marketImg": "xyz"
+    },
+    {
+        "categoryID": "id-0",
+        "marketName": "Musical Instruments",
+        "subcatImg": "xyz"
+    },
+    {
+        "categoryID": "id-0",
+        "marketName": "Baseball Cards",
+        "marketImg": "xyz"
+    }
+]

@@ -1,0 +1,27 @@
+[
+    {
+        "id" : "id-0",
+        "categoryName" : "For Sale",
+        "categoryImg" : "xyz123"
+    },
+    {
+        "id" : "id-1",
+        "categoryName" : "Services",
+        "categoryImg" : "xyz123"
+    },
+    {
+        "id" : "id-2",
+        "categoryName" : "Housing",
+        "categoryImg" : "xyz123"
+    },
+    {
+        "id" : "id-3",
+        "categoryName" : "Jobs",
+        "categoryImg" : "xyz123"
+    },
+    {
+        "id" : "id-4",
+        "categoryName" : "Community",
+        "categoryImg" : "xyz123"
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "catId": "id-0",
+        "subcatName": "Pinball Machines",
+        "subcatImg": "xyz"
+    },
+    {
+        "catId": "id-1",
+        "subcatName": "Pop Vinyl",
+        "subcatImg": "xyz"
+    },
+    {
+        "catId": "id-2",
+        "subcatName": "Star Wars Figures",
+        "subcatImg": "xyz"
+    },
+    {
+        "catId": "id-3",
+        "subcatName": "Video Games",
+        "subcatImg": "xyz"
+    },
+    {
+        "catId": "id-4",
+        "subcatName": "Musical Instruments",
+        "subcatImg": "xyz"
+    },
+    {
+        "catId": "id-5",
+        "subcatName": "Baseball Cards",
+        "subcatImg": "xyz"
+    }
+]
