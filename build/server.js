@@ -19,6 +19,19 @@ const apiGetCategoryMarketDetail_1 = require("./api/categories/apiGetCategoryMar
 const apiCreateCategory_1 = require("./api/categories/apiCreateCategory");
 const apiDeleteCategory_1 = require("./api/categories/apiDeleteCategory");
 const apiUpdateCategory_1 = require("./api/categories/apiUpdateCategory");
+const authenticator = (req, res, next) => {
+    const username = "Andy123";
+    req.user = username;
+    next();
+};
+const logger = (req, res, next) => {
+    console.log("User: " + req.user +
+        " - " + new Date() + " - " +
+        req.method + " Request to " + req.path);
+    next();
+};
+app.use(authenticator);
+app.use(logger);
 app.get("/", (req, res, next) => {
     res.send("Welcome to a CobraKind of API...");
 });

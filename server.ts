@@ -10,6 +10,23 @@ import { apiGetCategoryMarketDetail } from "./api/categories/apiGetCategoryMarke
 import { apiCreateCategory } from "./api/categories/apiCreateCategory";
 import { apiDeleteCategory } from "./api/categories/apiDeleteCategory";
 import { apiUpdateCategory } from "./api/categories/apiUpdateCategory";
+import { CustomRequestHandler } from "./model/express";
+
+const authenticator: CustomRequestHandler = (req, res, next) => {
+    const username = "Andy123";
+    req.user = username;
+    next();
+};
+
+const logger: CustomRequestHandler = (req, res, next) => {
+    console.log("User: " + req.user + 
+    " - " + new Date() + " - " + 
+    req.method + " Request to " + req.path);
+    next();
+};
+
+app.use(authenticator);
+app.use(logger);
 
 app.get("/", (req, res, next) => {
     res.send("Welcome to a CobraKind of API...");
