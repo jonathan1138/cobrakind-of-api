@@ -2,26 +2,26 @@
     {
         "id" : "id-0",
         "categoryName" : "For Sale",
-        "categoryImg" : "xyz123"
+        "categoryImg" : ["forSale.jpg"]
     },
     {
         "id" : "id-1",
         "categoryName" : "Services",
-        "categoryImg" : "xyz123"
+        "categoryImg" : ["services.jpg"]
     },
     {
         "id" : "id-2",
         "categoryName" : "Housing",
-        "categoryImg" : "xyz123"
+        "categoryImg" : []
     },
     {
         "id" : "id-3",
         "categoryName" : "Jobs",
-        "categoryImg" : "xyz123"
+        "categoryImg" : []
     },
     {
         "id" : "id-4",
         "categoryName" : "Community",
-        "categoryImg" : "xyz123"
+        "categoryImg" : []
     }
 ]

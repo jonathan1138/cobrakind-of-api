@@ -1,5 +1,6 @@
 import { DataStore } from "../../data/data";
 import { RequestHandler } from "express";
+import { PublicInfo, APIError } from "../../model/shared/sysMessages";
 
 export const apiUpdateCategory: RequestHandler = ( req, res, next ) => {
     const categoryID = req.params.id;
@@ -9,12 +10,12 @@ export const apiUpdateCategory: RequestHandler = ( req, res, next ) => {
         const newCategory = {
             id: categoryID, 
             categoryName: req.body.categoryName || originalCategory.categoryName,
-            categoryImg: req.body.categoryImg || originalCategory.categoryImg
+            categoryImg: originalCategory.categoryImg
         }
         DataStore.categories[categoryIndex] = newCategory;
-        res.json({"status": "success", "message": "Element Updated"});
+        res.json(new PublicInfo("Category Updated", 200));
     }
     else {
-        res.json({"status": "error", "message": "Element not found"});
+        next(new APIError("Validation Error", "Category Not Found.", 400));
     }
 }

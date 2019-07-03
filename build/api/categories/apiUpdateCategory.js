@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const data_1 = require("../../data/data");
+const sysMessages_1 = require("../../model/shared/sysMessages");
 exports.apiUpdateCategory = (req, res, next) => {
     const categoryID = req.params.id;
     const categoryIndex = data_1.DataStore.categories.findIndex((item) => item.id == categoryID);
@@ -9,12 +10,12 @@ exports.apiUpdateCategory = (req, res, next) => {
         const newCategory = {
             id: categoryID,
             categoryName: req.body.categoryName || originalCategory.categoryName,
-            categoryImg: req.body.categoryImg || originalCategory.categoryImg
+            categoryImg: originalCategory.categoryImg
         };
         data_1.DataStore.categories[categoryIndex] = newCategory;
-        res.json({ "status": "success", "message": "Element Updated" });
+        res.json(new sysMessages_1.PublicInfo("Category Updated", 200));
     }
     else {
-        res.json({ "status": "error", "message": "Element not found" });
+        next(new sysMessages_1.APIError("Validation Error", "Category Not Found.", 400));
     }
 };
