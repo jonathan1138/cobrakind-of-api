@@ -10,7 +10,7 @@ exports.apiCreateCategory = (req, res, next) => {
     const requiredFields = ["categoryName"];
     const givenFields = Object.getOwnPropertyNames(req.body);
     if (!requiredFields.every(field => givenFields.includes(field))) {
-        return next(new sysMessages_1.APIError("Data Missing", "Not all required fields supplied", 400));
+        return next(sysMessages_1.APIError.errMissingBody());
     }
     const newCategory = {
         id: v4_1.default(),
@@ -18,5 +18,5 @@ exports.apiCreateCategory = (req, res, next) => {
         categoryImg: []
     };
     data_1.DataStore.categories.push(newCategory);
-    res.json(new sysMessages_1.PublicInfo("Catgory Added", 200, { category: newCategory }));
+    res.json(sysMessages_1.PublicInfo.infoCreated({ newCategory: newCategory }));
 };

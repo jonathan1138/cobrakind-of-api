@@ -7,7 +7,7 @@ export const apiCreateCategory: RequestHandler = (req, res, next) => {
     const requiredFields = ["categoryName"];
     const givenFields = Object.getOwnPropertyNames(req.body);
     if(!requiredFields.every(field => givenFields.includes(field)) ) {
-        return next(new APIError("Data Missing", "Not all required fields supplied", 400));
+        return next(APIError.errMissingBody());
 
     }
     const newCategory = {
@@ -17,5 +17,5 @@ export const apiCreateCategory: RequestHandler = (req, res, next) => {
     }
 
     DataStore.categories.push(newCategory);
-    res.json(new PublicInfo("Catgory Added", 200, {category: newCategory}));
+    res.json(PublicInfo.infoCreated({newCategory: newCategory}));
 };

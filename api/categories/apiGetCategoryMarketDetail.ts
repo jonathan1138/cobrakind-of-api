@@ -10,12 +10,12 @@ export const apiGetCategoryMarketDetail: RequestHandler = (req, res, next) => {
     if (selectedCategory) {
         const imageURLs = selectedCategory.categoryImg.map(fileMapper(req.app.get("env")));
         const selectedMarkets = DataStore.markets.filter((item: any) => item.categoryID == categoryID);
-        // res.json(new CategoryMarketDetail(selectedCategory, selectedMarkets, imageURLs));
-        res.json(new PublicInfo("Category Market Details...", 200, {
-            category: new CategoryMarketDetail(selectedCategory, selectedMarkets, imageURLs)
-        }));
+        res.json(new CategoryMarketDetail(selectedCategory, selectedMarkets, imageURLs));
+        // res.json(new PublicInfo("Category Market Details...", 200, {
+        //     category: new CategoryMarketDetail(selectedCategory, selectedMarkets, imageURLs)
+        // }));
     }
     else {
-        next(new APIError("Validation Error", "Category Not Found.", 400));
+        res.json(APIError.errNotFound());
     }
 };

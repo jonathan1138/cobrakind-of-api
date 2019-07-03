@@ -7,9 +7,11 @@ exports.apiDeleteCategory = (req, res, next) => {
     const categoryIndex = data_1.DataStore.categories.findIndex((item) => item.id == categoryID);
     if (categoryIndex > -1) {
         data_1.DataStore.categories.splice(categoryIndex, 1);
-        res.json(new sysMessages_1.PublicInfo("Category Deleted", 200));
+        //res.json(new PublicInfo("Category Deleted", 204));
+        res.json(sysMessages_1.PublicInfo.infoDeleted(res.statusCode));
     }
     else {
-        res.json(new sysMessages_1.APIError("Validation Error", "Category not found.", 400));
+        // res.json(PublicError());
+        next(sysMessages_1.APIError.errNotFound());
     }
 };

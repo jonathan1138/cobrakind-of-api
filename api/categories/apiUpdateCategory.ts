@@ -13,9 +13,11 @@ export const apiUpdateCategory: RequestHandler = ( req, res, next ) => {
             categoryImg: originalCategory.categoryImg
         }
         DataStore.categories[categoryIndex] = newCategory;
-        res.json(new PublicInfo("Category Updated", 200));
+        //res.json(new PublicInfo("Category Updated", 200));
+        res.json(PublicInfo.infoUpdated({updatedCategory: newCategory}));
     }
     else {
-        next(new APIError("Validation Error", "Category Not Found.", 400));
+        //next(new APIError("Validation Error", "Category Not Found.", 400));
+        next(APIError.errNotFound());
     }
 }

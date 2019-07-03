@@ -10,12 +10,12 @@ exports.apiGetCategoryMarketDetail = (req, res, next) => {
     if (selectedCategory) {
         const imageURLs = selectedCategory.categoryImg.map(static_1.fileMapper(req.app.get("env")));
         const selectedMarkets = data_1.DataStore.markets.filter((item) => item.categoryID == categoryID);
-        // res.json(new CategoryMarketDetail(selectedCategory, selectedMarkets, imageURLs));
-        res.json(new sysMessages_1.PublicInfo("Category Market Details...", 200, {
-            category: new categoryMarketDetail_1.CategoryMarketDetail(selectedCategory, selectedMarkets, imageURLs)
-        }));
+        res.json(new categoryMarketDetail_1.CategoryMarketDetail(selectedCategory, selectedMarkets, imageURLs));
+        // res.json(new PublicInfo("Category Market Details...", 200, {
+        //     category: new CategoryMarketDetail(selectedCategory, selectedMarkets, imageURLs)
+        // }));
     }
     else {
-        next(new sysMessages_1.APIError("Validation Error", "Category Not Found.", 400));
+        res.json(sysMessages_1.APIError.errNotFound());
     }
 };
