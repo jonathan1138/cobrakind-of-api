@@ -1,8 +1,8 @@
-import { DataStore } from "../../data/data";
+import { DataStore } from "../../../data/data";
 import { RequestHandler } from "express";
-import { CategoryMarketDetail } from "../../model/shared/categoryMarketDetail";
+import { CategoryMarketDetail } from "../../../model/shared/categoryMarketDetail";
 import { fileMapper } from "../general/static";
-import { APIError, PublicInfo } from "../../model/shared/sysMessages";
+import { APIError, PublicInfo } from "../../../model/shared/sysMessages";
 
 export const apiGetCategoryMarketDetail: RequestHandler = (req, res, next) => {
     const categoryID = req.params.id;

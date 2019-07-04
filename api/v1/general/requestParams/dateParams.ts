@@ -1,5 +1,5 @@
 import { RequestParamHandler } from "express-serve-static-core";
-import { APIError } from "../../../model/shared/sysMessages";
+import { APIError } from "../../../../model/shared/sysMessages";
 
 const dateFormat = new RegExp("(\\d{4})-(\\d{1,2})-(\\d{1,2})");
 

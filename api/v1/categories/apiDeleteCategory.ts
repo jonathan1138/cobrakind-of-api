@@ -1,6 +1,6 @@
-import { DataStore } from "../../data/data";
+import { DataStore } from "../../../data/data";
 import { RequestHandler } from "express";
-import { PublicError, PublicInfo, APIError } from "../../model/shared/sysMessages";
+import { PublicError, PublicInfo, APIError } from "../../../model/shared/sysMessages";
 
 export const apiDeleteCategory: RequestHandler = ( req, res, next ) => {
     const categoryID = req.params.id;
@@ -8,7 +8,8 @@ export const apiDeleteCategory: RequestHandler = ( req, res, next ) => {
     if (categoryIndex > -1) {
         DataStore.categories.splice(categoryIndex, 1);
         //res.json(new PublicInfo("Category Deleted", 204));
-        res.json(PublicInfo.infoDeleted(res.statusCode));
+        res.status(204);
+        res.json(PublicInfo.infoDeleted());
     }
     else {
       // res.json(PublicError());

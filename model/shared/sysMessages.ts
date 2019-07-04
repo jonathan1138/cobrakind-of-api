@@ -2,7 +2,7 @@ export class APIError extends Error {
     constructor(name: string,
                 message: string,
                 public status: number,
-                public poperties?: any, 
+                public properties?: any, 
                 public internalProperties?: any) {
     super();
     this.name = name;
@@ -21,7 +21,7 @@ export class APIError extends Error {
         return new APIError("Missing Body", "Missing Data in Request Body", 400, properties, internalProperties);
     }
     static errServerError(properties?: any, internalProperties?: any) {
-        return new APIError("Internal Server Error", "Request could not be carried out", 500, properties, internalProperties);
+        return new APIError("Internal Server Error", "Request could not be carried out", 400, properties, internalProperties);
     }
 }
 
@@ -34,14 +34,14 @@ export class PublicError {
         this.name = err.name;
         this.message = err.message;
         this.status = err.status;
-        this.properties = err.poperties;
+        this.properties = err.properties;
     }
 }
 
-export class PublicInfo{
+export class PublicInfo {
     constructor(public message: string,
                 public status: number, 
-                public properties?: any) {};
+                public properties?: any ) {};
     static infoDeleted(properties?: any) {
         return new PublicInfo("Resource Deleted", 204, properties);
     }

@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const data_1 = require("../../data/data");
+const data_1 = require("../../../data/data");
 const static_1 = require("../general/static");
-const sysMessages_1 = require("../../model/shared/sysMessages");
+const sysMessages_1 = require("../../../model/shared/sysMessages");
 exports.apiUploadCategoryImage = (req, res, next) => {
     const categoryID = req.params.id;
     const categoryIndex = data_1.DataStore.categories.findIndex((item) => item.id == categoryID);

@@ -6,7 +6,7 @@ import uuid from "uuid/v4";
 export function getStaticHome(env: string) {
     switch(env) {
         case "development": 
-            return "http://localhost:8091/static/";
+            return "http://localhost:8091/v1/static/";
         case "productioon": 
         //...CDN...
     }
@@ -25,6 +25,10 @@ export function getFileUploader(env: string): RequestHandler {
                     callback(null, path.resolve("./", "public", "img") );
                 },
                 filename: function (req, file, callback) {
+                    const fileExt = path.extname(file.originalname);
+                    const yesStr = ".jpg";
+                    console.log(fileExt + " " + yesStr);
+                    console.log(fileExt.localeCompare(yesStr));
                     callback(null, fileID + path.extname(file.originalname));
                 }
             });

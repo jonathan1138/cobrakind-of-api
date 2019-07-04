@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class APIError extends Error {
-    constructor(name, message, status, poperties, internalProperties) {
+    constructor(name, message, status, properties, internalProperties) {
         super();
         this.status = status;
-        this.poperties = poperties;
+        this.properties = properties;
         this.internalProperties = internalProperties;
         this.name = name;
         this.message = message;
@@ -22,7 +22,7 @@ class APIError extends Error {
         return new APIError("Missing Body", "Missing Data in Request Body", 400, properties, internalProperties);
     }
     static errServerError(properties, internalProperties) {
-        return new APIError("Internal Server Error", "Request could not be carried out", 500, properties, internalProperties);
+        return new APIError("Internal Server Error", "Request could not be carried out", 400, properties, internalProperties);
     }
 }
 exports.APIError = APIError;
@@ -31,7 +31,7 @@ class PublicError {
         this.name = err.name;
         this.message = err.message;
         this.status = err.status;
-        this.properties = err.poperties;
+        this.properties = err.properties;
     }
 }
 exports.PublicError = PublicError;

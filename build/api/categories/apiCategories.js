@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const apiCheckCategoryFilters_1 = require("./apiCheckCategoryFilters");
+const apiGetCategories_1 = require("./apiGetCategories");
+const apiCreateCategory_1 = require("./apiCreateCategory");
+const apiUploadCategoryImage_1 = require("./apiUploadCategoryImage");
+const apiDeleteCategory_1 = require("./apiDeleteCategory");
+const apiUpdateCategory_1 = require("./apiUpdateCategory");
+const apiGetCategoryMarketDetail_1 = require("./apiGetCategoryMarketDetail");
+const bodyParser_1 = require("../general/bodyParser");
+exports.categoryRouter = express_1.Router();
+exports.categoryRouter.get("/", apiCheckCategoryFilters_1.apiCheckCategoryFilters, apiGetCategories_1.apiGetCategories);
+exports.categoryRouter.post("/", bodyParser_1.jsonParser, apiCreateCategory_1.apiCreateCategory);
+exports.categoryRouter.post("/:id", apiUploadCategoryImage_1.apiUploadCategoryImage);
+exports.categoryRouter.delete("/:id", apiDeleteCategory_1.apiDeleteCategory);
+exports.categoryRouter.patch("/:id", bodyParser_1.jsonParser, apiUpdateCategory_1.apiUpdateCategory);
+exports.categoryRouter.get("/:id", apiGetCategoryMarketDetail_1.apiGetCategoryMarketDetail);

@@ -1,6 +1,6 @@
-import { DataStore } from "../../data/data";
+import { DataStore } from "../../../data/data";
 import { RequestHandler } from "express";
-import { PublicInfo, APIError } from "../../model/shared/sysMessages";
+import { PublicInfo, APIError } from "../../../model/shared/sysMessages";
 
 export const apiUpdateCategory: RequestHandler = ( req, res, next ) => {
     const categoryID = req.params.id;

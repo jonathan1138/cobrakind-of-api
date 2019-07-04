@@ -1,8 +1,8 @@
-import { DataStore } from "../../data/data";
+import { DataStore } from "../../../data/data";
 import { RequestHandler } from "express";
-import { Category } from "../../model/shared/categories";
-import { PublicInfo } from "../../model/shared/sysMessages";
-import { CategoryFilters } from "../../model/shared/categoryFilters";
+import { Category } from "../../../model/shared/categories";
+import { PublicInfo } from "../../../model/shared/sysMessages";
+import { CategoryFilters } from "../../../model/shared/categoryFilters";
 
 export const apiGetCategories: RequestHandler = (req, res, next) => {
     const filters = new CategoryFilters(req.query);
