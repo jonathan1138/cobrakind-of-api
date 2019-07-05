@@ -10,7 +10,7 @@ export const apiUpdateCategory: RequestHandler = ( req, res, next ) => {
         const newCategory = {
             id: categoryID, 
             categoryName: req.body.categoryName || originalCategory.categoryName,
-            categoryImg: originalCategory.categoryImg
+            categoryImage: originalCategory.categoryImage
         }
         DataStore.categories[categoryIndex] = newCategory;
         //res.json(new PublicInfo("Category Updated", 200));

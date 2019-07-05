@@ -10,6 +10,7 @@ import { categoryRouter } from "./categories/apiCategories";
 import { apiDownloadCategoryImage } from "./categories/apiDownloadCategoryImage";
 import { apiErrorHandler } from "./general/errorHandling";
 
+
 export let routerV1 = Router();
 
 // Home

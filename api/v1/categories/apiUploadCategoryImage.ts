@@ -17,7 +17,7 @@ export const apiUploadCategoryImage: RequestHandler = ( req, res, next ) => {
                 console.log(err);
                 next(APIError.errServerError());
             } else {
-                DataStore.categories[categoryIndex].categoryImg.push(req.file.filename);
+                DataStore.categories[categoryIndex].categoryImage.push(req.file.filename);
                 res.json(PublicInfo.infoCreated({uploadedFile: req.file.filename}));
             }
         });

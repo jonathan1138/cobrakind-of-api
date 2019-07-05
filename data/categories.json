@@ -1,27 +1,27 @@
 [
     {
-        "id" : "id-0",
+        "id" : "d7882d56-63ea-4c05-9c19-969295c47d11",
         "categoryName" : "For Sale",
-        "categoryImg" : ["forSale.jpg"]
+        "categoryImage" : ["forSale.jpg"]
     },
     {
-        "id" : "id-1",
+        "id" : "37e81eb8-a139-4849-b7b7-adf0109618ef",
         "categoryName" : "Services",
-        "categoryImg" : ["services.jpg"]
+        "categoryImage" : ["services.jpg"]
     },
     {
-        "id" : "id-2",
+        "id" : "90811a02-a49c-470f-a251-deaa2a605418",
         "categoryName" : "Housing",
-        "categoryImg" : []
+        "categoryImage" : []
     },
     {
-        "id" : "id-3",
+        "id" : "816c2683-21b3-4bbd-82c9-4c081e08aef1",
         "categoryName" : "Jobs",
-        "categoryImg" : []
+        "categoryImage" : []
     },
     {
-        "id" : "id-4",
+        "id" : "c695eef9-c701-44a8-9681-35fb80aeb8e0",
         "categoryName" : "Community",
-        "categoryImg" : []
+        "categoryImage" : []
     }
 ]

@@ -12,7 +12,7 @@ export const apiCreateCategory: RequestHandler = (req, res, next) => {
     const newCategory = {
         id: uuid(), 
         categoryName: req.body.categoryName || "",
-        categoryImg: []
+        categoryImage: []
     }
     DataStore.categories.push(newCategory);
     res.status(201);

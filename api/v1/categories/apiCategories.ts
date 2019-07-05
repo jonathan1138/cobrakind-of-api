@@ -9,6 +9,7 @@ import { apiGetCategoryMarketDetail } from "./apiGetCategoryMarketDetail";
 import { apiDownloadCategoryImage } from "./apiDownloadCategoryImage";
 import { jsonParser } from "../general/bodyParser";
 
+
 export let categoryRouter = Router();
 
 categoryRouter.route("/")
