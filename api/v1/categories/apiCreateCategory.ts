@@ -1,7 +1,8 @@
 import { RequestHandler } from "express";
 import uuid from "uuid/v4";
-import { DataStore } from "../../../data/data";
 import { APIError, PublicInfo } from "../../../model/shared/sysMessages";
+import * as dbModel from "../../../db/model_generated";
+import { db,pgp } from "../../../db/db";
 
 export const apiCreateCategory: RequestHandler = (req, res, next) => {
     const requiredFields = ["categoryName"];
@@ -9,12 +10,23 @@ export const apiCreateCategory: RequestHandler = (req, res, next) => {
     if(!requiredFields.every(field => givenFields.includes(field)) ) {
         return next(APIError.errMissingBody());
     }
-    const newCategory = {
+    const newCategory: dbModel.categories = {
         id: uuid(), 
-        categoryName: req.body.categoryName || "",
-        categoryImage: []
+        category_name: req.body.categoryName || "",
+        category_image: []
     }
-    DataStore.categories.push(newCategory);
-    res.status(201);
-    res.json(PublicInfo.infoCreated({newCategory: newCategory}));
+    db.none(pgp.helpers.insert(newCategory, undefined, "categories"))
+        .then( () => {
+            res.status(201).json(PublicInfo.infoCreated({newCategory: newCategory}));
+        })
+        .catch(err => {
+            if (err instanceof pgp.errors.QueryResultError) {
+                next(APIError.errNotFound());
+            } 
+            else {
+                console.log(err);
+                next(APIError.errInvalidQueryParameter());
+            }            
+        }
+    );
 };

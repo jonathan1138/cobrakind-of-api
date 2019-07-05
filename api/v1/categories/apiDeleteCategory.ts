@@ -1,18 +1,22 @@
-import { DataStore } from "../../../data/data";
 import { RequestHandler } from "express";
-import { PublicError, PublicInfo, APIError } from "../../../model/shared/sysMessages";
+import { PublicInfo, APIError } from "../../../model/shared/sysMessages";
+import { db,pgp } from "../../../db/db";
 
 export const apiDeleteCategory: RequestHandler = ( req, res, next ) => {
     const categoryID = req.params.id;
-    const categoryIndex = DataStore.categories.findIndex((item: any) => item.id == categoryID);
-    if (categoryIndex > -1) {
-        DataStore.categories.splice(categoryIndex, 1);
-        //res.json(new PublicInfo("Category Deleted", 204));
-        res.status(204);
-        res.json(PublicInfo.infoDeleted());
-    }
-    else {
-      // res.json(PublicError());
-        next(APIError.errNotFound());
-    }
-}
+    db.none("delete from categories where id = ${id}", {id: categoryID})
+        .then( () => {
+            res.status(204).json(PublicInfo.infoDeleted());
+            //res.json(PublicInfo.infoDeleted());
+        })
+        .catch(err => {
+            if (err instanceof pgp.errors.QueryResultError) {
+                next(APIError.errNotFound());
+            } 
+            else {
+                console.log(err);
+                next(APIError.errInvalidQueryParameter());
+            }            
+        }
+    );
+};

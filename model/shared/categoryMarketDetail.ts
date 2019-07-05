@@ -1,14 +1,14 @@
 import { Category} from "./categories";
 import { Market } from "./markets";
-
+import * as dbModelExt from "../../db/model_extensions";
 export class CategoryMarketDetail extends Category {
     categoryName: string
     categoryImage: string[]
     markets: Market[]
-    constructor(categoryData: any, marketData: any, categoryImages: string[]) {
-        super(categoryData);
-        this.categoryName = categoryData.category_name;
-        this.markets = marketData.map((item: any) => new Market(item));
+    constructor(data: dbModelExt.categoriesWithMarkets, categoryImages: string[]) {
+        super(data);
+        this.categoryName = data.category_name;
+        this.markets = data.markets.map((item: any) => new Market(item));
         this.categoryImage = categoryImages;
     }
 }

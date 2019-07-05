@@ -1,18 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const data_1 = require("../../../data/data");
 const sysMessages_1 = require("../../../model/shared/sysMessages");
+const db_1 = require("../../../db/db");
 exports.apiDeleteCategory = (req, res, next) => {
     const categoryID = req.params.id;
-    const categoryIndex = data_1.DataStore.categories.findIndex((item) => item.id == categoryID);
-    if (categoryIndex > -1) {
-        data_1.DataStore.categories.splice(categoryIndex, 1);
-        //res.json(new PublicInfo("Category Deleted", 204));
-        res.status(204);
-        res.json(sysMessages_1.PublicInfo.infoDeleted());
-    }
-    else {
-        // res.json(PublicError());
-        next(sysMessages_1.APIError.errNotFound());
-    }
+    db_1.db.none("delete from categories where id = ${id}", { id: categoryID })
+        .then(() => {
+        res.status(204).json(sysMessages_1.PublicInfo.infoDeleted());
+        //res.json(PublicInfo.infoDeleted());
+    })
+        .catch(err => {
+        if (err instanceof db_1.pgp.errors.QueryResultError) {
+            next(sysMessages_1.APIError.errNotFound());
+        }
+        else {
+            console.log(err);
+            next(sysMessages_1.APIError.errInvalidQueryParameter());
+        }
+    });
 };

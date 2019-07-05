@@ -6,21 +6,24 @@ const sysMessages_1 = require("../../../model/shared/sysMessages");
 const db_1 = require("../../../db/db");
 exports.apiGetCategoryMarketDetail = (req, res, next) => {
     const categoryID = req.params.id;
-    db_1.db.one("select * from categories where id = ${id}", { id: categoryID })
-        .then((selectedCategory) => {
-        if (selectedCategory) {
-            const catImgNames = selectedCategory.category_image || [];
-            const imageURLs = catImgNames.map(static_1.fileMapper(req.app.get("env")));
-            db_1.db.any("select * from markets where category_id = ${id}", { id: categoryID })
-                .then((selectedMarkets) => {
-                res.json(new categoryMarketDetail_1.CategoryMarketDetail(selectedCategory, selectedMarkets, imageURLs));
-            });
-            // res.json(new PublicInfo("Category Market Details...", 200, {
-            //     category: new CategoryMarketDetail(selectedCategory, selectedMarkets, imageURLs)
-            // }));
+    db_1.db.one("select c.*,\
+            (select json_agg(markets)\
+                from markets where category_id = ${id}\
+            ) as markets \
+            from categories as c\
+            where c.id = ${id}", { id: categoryID })
+        .then((data) => {
+        const categoryImgNames = data.category_image || [];
+        const categoryImgURLs = categoryImgNames.map(static_1.fileMapper(req.app.get("env")));
+        res.json(new categoryMarketDetail_1.CategoryMarketDetail(data, categoryImgURLs));
+    })
+        .catch(err => {
+        if (err instanceof db_1.pgp.errors.QueryResultError) {
+            next(sysMessages_1.APIError.errNotFound());
         }
         else {
-            res.json(sysMessages_1.APIError.errNotFound());
+            console.log(err);
+            next(sysMessages_1.APIError.errInvalidQueryParameter());
         }
     });
 };

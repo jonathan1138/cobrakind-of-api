@@ -6,7 +6,7 @@
   "scripts": {
     "start-server": "tsc && node_modules/.bin/env-cmd node build/server.js",
     "start": "nodemon -e ts -w ./ -x npm run start-server",
-    "update-metadata": "node_modules/.bin/schemats generate -c postgres://cobrakind_admin:pioneer123@localhost:5432/cobrakinddb -o db/model_generated.ts" 
+    "update-metadata": "node_modules/.bin/schemats generate -c postgres://cobrakind_admin:pioneer123@localhost:5432/cobrakinddb -o db/model_generated.ts"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "change-case-object": "^2.0.0",
     "env-cmd": "^9.0.3",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
