@@ -12,10 +12,14 @@ exports.apiCreateCategory = (req, res, next) => {
     if (!requiredFields.every(field => givenFields.includes(field))) {
         return next(sysMessages_1.APIError.errMissingBody());
     }
+    if (!req.user) {
+        next(sysMessages_1.APIError.errUnauthorizedAccess());
+    }
     const newCategory = {
         id: v4_1.default(),
         category_name: req.body.categoryName || "",
-        category_image: []
+        category_image: [],
+        user_id: req.user.id
     };
     db_1.db.none(db_1.pgp.helpers.insert(newCategory, undefined, "categories"))
         .then(() => {

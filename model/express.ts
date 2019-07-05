@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from "express";
 import { PublicInfo } from "../model/shared/sysMessages";
+import * as dbModel from "../db/model_generated";
 export interface CustomRequest extends Request {
-    user?: string;
+    user?: dbModel.users;
 }
 
 export interface CustomResponse extends Response {
-    publicInfo: PublicInfo;
+
 }
 
 export type CustomRequestHandler = (

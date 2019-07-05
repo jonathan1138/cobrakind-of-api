@@ -23,6 +23,12 @@ export class APIError extends Error {
     static errServerError(properties?: any, internalProperties?: any) {
         return new APIError("Internal Server Error", "Request could not be carried out", 400, properties, internalProperties);
     }
+    static errSessionExpired(properties?: any, internalProperties?: any) {
+        return new APIError("Session Token Expired", "Sesh expired / log back in", 401, properties, internalProperties);
+    }
+    static errUnauthorizedAccess(properties?: any, internalProperties?: any) {
+        return new APIError("Unauthorized", "Client Authorization Failed", 401, properties, internalProperties);
+    }
 }
 
 export class PublicError {
