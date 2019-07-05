@@ -8,6 +8,7 @@ import { APIError } from "../../../model/shared/sysMessages";
 export const apiSessionVerify: CustomRequestHandler = (req, res, next) => {
    if (req.headers.authorization) {
        const token = req.headers.authorization.split(" ")[1];
+    
        jwt.verify(token, sessionTokenSecret, (err, decoded: any) => {
            if (err) {
                 next(APIError.errUnauthorizedAccess());
@@ -15,12 +16,12 @@ export const apiSessionVerify: CustomRequestHandler = (req, res, next) => {
            else {
                 const userId = decoded.userId;
                 db.one("select * from users where id = ${id}", {id: userId})
-                        .then((user: dbModel.users) => {
-                            console.log(user);
-                            req.user = user;
-                            next();
-                        });
-                next();
+                    .then((user: dbModel.users) => {
+                        console.log(user);
+                        req.user = user;
+                        next();
+                    }
+                );
             }
         });
     }

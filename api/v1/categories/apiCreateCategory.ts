@@ -10,6 +10,7 @@ export const apiCreateCategory: CustomRequestHandler = (req, res, next) => {
     if(!requiredFields.every(field => givenFields.includes(field)) ) {
         return next(APIError.errMissingBody());
     }
+
     if (!req.user) {
         next(APIError.errUnauthorizedAccess());
     }
