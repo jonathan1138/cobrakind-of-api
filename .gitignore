@@ -1,5 +1,9 @@
 node_modules/
+<<<<<<< HEAD
 config/
+=======
+/config/
+>>>>>>> aeb6eeeca5fbed51ffe9d1d868c2253e1efa8f6b
 
 # misc
 .DS_Store
