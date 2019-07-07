@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const data_1 = require("../../../data/data");
 const static_1 = require("../general/static");
 const sysMessages_1 = require("../../../model/shared/sysMessages");
-exports.datastoreUploadCategoryImage = (req, res, next) => {
+exports.datastoreUploadcImg = (req, res, next) => {
     const categoryID = req.params.id;
     const categoryIndex = data_1.DataStore.categories.findIndex((item) => item.id == categoryID);
     if (categoryIndex == -1) {
@@ -18,7 +18,7 @@ exports.datastoreUploadCategoryImage = (req, res, next) => {
                 next(sysMessages_1.APIError.errServerError());
             }
             else {
-                data_1.DataStore.categories[categoryIndex].categoryImage.push(req.file.filename);
+                data_1.DataStore.categories[categoryIndex].cImg.push(req.file.filename);
                 res.json(sysMessages_1.PublicInfo.infoCreated({ uploadedFile: req.file.filename }));
             }
         });

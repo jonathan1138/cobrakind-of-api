@@ -9,8 +9,8 @@ export const datastoreUpdateCategory: RequestHandler = ( req, res, next ) => {
         const originalCategory = DataStore.categories[categoryIndex];
         const newCategory = {
             id: categoryID, 
-            categoryName: req.body.categoryName || originalCategory.categoryName,
-            categoryImage: originalCategory.categoryImage
+            cName: req.body.cName || originalCategory.cName,
+            cImg: originalCategory.cImg
         }
         DataStore.categories[categoryIndex] = newCategory;
         //res.json(new PublicInfo("Category Updated", 200));

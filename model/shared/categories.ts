@@ -1,11 +1,11 @@
 import * as dbModel from "../../db/model_generated";
 export class Category {
     id: string
-    categoryName: string
-    categoryImage: string[]
+    cName: string
+    cImg: string[]
     constructor(data: dbModel.categories) {
         this.id = data.id;
-        this.categoryName = data.category_name || "";
-        this.categoryImage = data.category_image || [];
+        this.cName = data.category_name || "";
+        this.cImg = data.category_image || [];
     }
 }

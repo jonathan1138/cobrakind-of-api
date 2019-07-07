@@ -7,15 +7,15 @@ const v4_1 = __importDefault(require("uuid/v4"));
 const data_1 = require("../../../data/data");
 const sysMessages_1 = require("../../../model/shared/sysMessages");
 exports.datastoreCreateCategory = (req, res, next) => {
-    const requiredFields = ["categoryName"];
+    const requiredFields = ["cName"];
     const givenFields = Object.getOwnPropertyNames(req.body);
     if (!requiredFields.every(field => givenFields.includes(field))) {
         return next(sysMessages_1.APIError.errMissingBody());
     }
     const newCategory = {
         id: v4_1.default(),
-        categoryName: req.body.categoryName || "",
-        categoryImage: []
+        cName: req.body.cName || "",
+        cImg: []
     };
     data_1.DataStore.categories.push(newCategory);
     res.status(201);

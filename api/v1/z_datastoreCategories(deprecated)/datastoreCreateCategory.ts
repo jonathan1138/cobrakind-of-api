@@ -4,15 +4,15 @@ import { DataStore } from "../../../data/data";
 import { APIError, PublicInfo } from "../../../model/shared/sysMessages";
 
 export const datastoreCreateCategory: RequestHandler = (req, res, next) => {
-    const requiredFields = ["categoryName"];
+    const requiredFields = ["cName"];
     const givenFields = Object.getOwnPropertyNames(req.body);
     if(!requiredFields.every(field => givenFields.includes(field)) ) {
         return next(APIError.errMissingBody());
     }
     const newCategory = {
         id: uuid(), 
-        categoryName: req.body.categoryName || "",
-        categoryImage: []
+        cName: req.body.cName || "",
+        cImg: []
     }
     DataStore.categories.push(newCategory);
     res.status(201);

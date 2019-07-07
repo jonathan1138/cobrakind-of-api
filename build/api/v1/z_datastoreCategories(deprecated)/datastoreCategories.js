@@ -16,5 +16,5 @@ exports.categoryRouter.route("/")
 exports.categoryRouter.route("/:id")
     .get(datastoreGetCategoryMarketDetail_1.datastoreGetCategoryMarketDetail)
     .delete(datastoreDeleteCategory_1.datastoreDeleteCategory)
-    .post(datastoreUploadCategoryImage_1.datastoreUploadCategoryImage)
+    .post(datastoreUploadCategoryImage_1.datastoreUploadcImg)
     .patch(bodyParser_1.jsonParser, datastoreUpdateCategory_1.datastoreUpdateCategory);

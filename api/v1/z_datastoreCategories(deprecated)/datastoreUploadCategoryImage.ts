@@ -3,7 +3,7 @@ import { RequestHandler } from "express";
 import { getFileUploader } from "../general/static";
 import { APIError, PublicInfo } from "../../../model/shared/sysMessages";
 
-export const datastoreUploadCategoryImage: RequestHandler = ( req, res, next ) => {
+export const datastoreUploadcImg: RequestHandler = ( req, res, next ) => {
     const categoryID = req.params.id;
     const categoryIndex = DataStore.categories.findIndex((item: any) => item.id == categoryID);
     if (categoryIndex == -1) {
@@ -17,7 +17,7 @@ export const datastoreUploadCategoryImage: RequestHandler = ( req, res, next ) =
                 console.log(err);
                 next(APIError.errServerError());
             } else {
-                DataStore.categories[categoryIndex].categoryImage.push(req.file.filename);
+                DataStore.categories[categoryIndex].cImg.push(req.file.filename);
                 res.json(PublicInfo.infoCreated({uploadedFile: req.file.filename}));
             }
         });

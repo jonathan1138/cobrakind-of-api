@@ -2,37 +2,37 @@
     {
         "id" : "2db40da1-97a2-4115-b597-81b4cfcf0db1",
         "categoryID" : "d7882d56-63ea-4c05-9c19-969295c47d11",
-        "marketName" : "Pinball Machines",
-        "marketImage" : "xyz"
+        "mName" : "Pinball Machines",
+        "mImg" : "xyz"
     },
     {
         "id" : "39412eef-ac4b-4024-a592-f44520b4ea4a",
         "categoryID" : "d7882d56-63ea-4c05-9c19-969295c47d11",
-        "marketName" : "Pop Vinyl",
-        "marketImage" : "xyz"
+        "mName" : "Pop Vinyl",
+        "mImg" : "xyz"
     },
     {
         "id" : "1c2b5607-a789-4191-94c1-793c3fbd2901",
         "categoryID" : "d7882d56-63ea-4c05-9c19-969295c47d11",
-        "marketName" : "Star Wars Figures",
-        "marketImage" : "xyz"
+        "mName" : "Star Wars Figures",
+        "mImg" : "xyz"
     },
     {
         "id" : "c126f5dc-5b66-4f4f-a502-b91f97e68c94",
         "categoryID" : "d7882d56-63ea-4c05-9c19-969295c47d11",
-        "marketName" : "Video Games",
-        "marketImage" : "xyz"
+        "mName" : "Video Games",
+        "mImg" : "xyz"
     },
     {
         "id" : "8449391b-46ff-493b-b9ff-cd9eb2ab097c",
         "categoryID" : "d7882d56-63ea-4c05-9c19-969295c47d11",
-        "marketName" : "Musical Instruments",
-        "marketImage" : "xyz"
+        "mName" : "Musical Instruments",
+        "mImg" : "xyz"
     },
     {
         "id" : "786d42c7-824b-4357-bb94-d6c4d5d7c604",
         "categoryID" : "d7882d56-63ea-4c05-9c19-969295c47d11",
-        "marketName" : "Baseball Cards",
-        "marketImage" : "xyz"
+        "mName" : "Baseball Cards",
+        "mImg" : "xyz"
     }
 ]

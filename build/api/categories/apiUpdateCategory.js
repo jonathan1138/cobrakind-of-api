@@ -9,7 +9,7 @@ exports.apiUpdateCategory = (req, res, next) => {
         const originalCategory = data_1.DataStore.categories[categoryIndex];
         const newCategory = {
             id: categoryID,
-            categoryName: req.body.categoryName || originalCategory.categoryName,
+            cName: req.body.cName || originalCategory.cName,
             categoryImg: originalCategory.categoryImg
         };
         data_1.DataStore.categories[categoryIndex] = newCategory;

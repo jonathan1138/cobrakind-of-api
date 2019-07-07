@@ -44,5 +44,5 @@ exports.routerV1.use("/categories", apiCategories_1.categoryRouter);
 exports.routerV1.post("/tokensignin", bodyParser_1.urlEncodedParser, apiTokenSignin_1.apiTokenSignin);
 exports.routerV1.post("/localsignup", bodyParser_1.jsonParser, apiLocalSignup_1.apiLocalSignup);
 exports.routerV1.post("/localsignin", bodyParser_1.jsonParser, apiLocalSignin_1.apiLocalSignin);
-exports.routerV1.get("/static/download/:id", apiDownloadCategoryImage_1.apiDownloadCategoryImage);
+exports.routerV1.get("/static/download/:id", apiDownloadCategoryImage_1.apiDownloadcImg);
 exports.routerV1.use(errorHandling_1.apiErrorHandler);

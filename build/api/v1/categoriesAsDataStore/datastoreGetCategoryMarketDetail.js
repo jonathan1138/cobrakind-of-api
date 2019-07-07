@@ -8,7 +8,7 @@ exports.datastoreGetCategoryMarketDetail = (req, res, next) => {
     const categoryID = req.params.id;
     const selectedCategory = data_1.DataStore.categories.find((element) => element.id == categoryID);
     if (selectedCategory) {
-        const imageURLs = selectedCategory.categoryImage.map(static_1.fileMapper(req.app.get("env")));
+        const imageURLs = selectedCategory.cImg.map(static_1.fileMapper(req.app.get("env")));
         const selectedMarkets = data_1.DataStore.markets.filter((item) => item.categoryID == categoryID);
         res.json(new categoryMarketDetail_1.CategoryMarketDetail(selectedCategory, selectedMarkets, imageURLs));
         // res.json(new PublicInfo("Category Market Details...", 200, {

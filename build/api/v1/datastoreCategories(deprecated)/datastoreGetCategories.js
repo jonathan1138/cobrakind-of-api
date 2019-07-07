@@ -9,7 +9,7 @@ exports.datastoreGetCategories = (req, res, next) => {
     const filters = new categoryFilters_1.CategoryFilters(req.query);
     const filteredData = data_1.DataStore.categories.filter((item) => {
         let conditions = [
-            filters.categoryName ? (item.categoryName == filters.categoryName) : true
+            filters.cName ? (item.cName == filters.cName) : true
         ];
         return conditions.every(value => value == true);
     });

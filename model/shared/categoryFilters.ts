@@ -1,17 +1,17 @@
 import { pgp } from "../../db/db";
 
 export class CategoryFilters {
-    readonly categoryName: string
-    readonly categoryImage: string
+    readonly cName: string
+    readonly cImg: string
     constructor(data: any) {
-        this.categoryName = data.categoryName;
-        this.categoryImage = data.categoryImage;
+        this.cName = data.cName;
+        this.cImg = data.cImg;
     }
 
     getCondition() {
         const filterCondition = [
-            this.categoryName ? "category_name = ${categoryName}": "true",
-            this.categoryImage ? "category_image = ${categoryImage}": "true"
+            this.cName ? "category_name = ${cName}": "true",
+            this.cImg ? "category_image = ${cImg}": "true"
         ].join(" AND ");
         return pgp.as.format(filterCondition, this);
     }

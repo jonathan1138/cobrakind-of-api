@@ -4,7 +4,7 @@ const express_1 = require("express");
 const apiCheckCategoryFilters_1 = require("./apiCheckCategoryFilters");
 const apiGetCategories_1 = require("./apiGetCategories");
 const apiCreateCategory_1 = require("./apiCreateCategory");
-const apiUploadCategoryImage_1 = require("./apiUploadCategoryImage");
+const apiUploadcImg_1 = require("./apiUploadcImg");
 const apiDeleteCategory_1 = require("./apiDeleteCategory");
 const apiUpdateCategory_1 = require("./apiUpdateCategory");
 const apiGetCategoryMarketDetail_1 = require("./apiGetCategoryMarketDetail");
@@ -16,5 +16,5 @@ exports.categoryRouter.route("/")
 exports.categoryRouter.route("/:id")
     .get(apiGetCategoryMarketDetail_1.apiGetCategoryMarketDetail)
     .delete(apiDeleteCategory_1.apiDeleteCategory)
-    .post(apiUploadCategoryImage_1.apiUploadCategoryImage)
+    .post(apiUploadcImg_1.apiUploadcImg)
     .patch(bodyParser_1.jsonParser, apiUpdateCategory_1.apiUpdateCategory);

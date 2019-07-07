@@ -5,7 +5,7 @@ import { db,pgp } from "../../../db/db";
 import { CustomRequestHandler } from "../../../model/express";
 
 export const apiCreateCategory: CustomRequestHandler = (req, res, next) => {
-    const requiredFields = ["categoryName"];
+    const requiredFields = ["cName"];
     const givenFields = Object.getOwnPropertyNames(req.body);
     if(!requiredFields.every(field => givenFields.includes(field)) ) {
         return next(APIError.errMissingBody());
@@ -15,8 +15,8 @@ export const apiCreateCategory: CustomRequestHandler = (req, res, next) => {
         next(APIError.errUnauthorizedAccess());
     }
 
-    const receivedCatName = req.body.categoryName;
-    console.log(req.body.categoryName);
+    const receivedCatName = req.body.cName;
+    console.log(req.body.cName);
 
     db.one("select * from categories where category_name = ${category_name} LIMIT 1", {category_name: receivedCatName})
         .then((category_name: dbModel.categories) => {
@@ -27,7 +27,7 @@ export const apiCreateCategory: CustomRequestHandler = (req, res, next) => {
 
             const newCategory: dbModel.categories = {
                 id: uuid(), 
-                category_name: req.body.categoryName || "",
+                category_name: req.body.cName || "",
                 category_image: [],
                 user_id: req.user!.id
             }

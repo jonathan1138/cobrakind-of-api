@@ -5,15 +5,16 @@ const db_1 = require("../../../db/db");
 const categoryFilters_1 = require("../../../model/shared/categoryFilters");
 exports.apiDeleteCategoryImage = (req, res, next) => {
     const categoryID = req.params.id;
-    const categoryImage = new categoryFilters_1.CategoryFilters(req.query).categoryImage;
-    if (!categoryImage || !categoryID) {
+    const cImg = new categoryFilters_1.CategoryFilters(req.query).cImg;
+    console.log(cImg);
+    if (!cImg || !categoryID) {
         next(sysMessages_1.APIError.errMissingBody());
     }
     else {
         const sql = "update categories\
-        set category_image = array_remove(category_image, ${categoryImage})\
+        set category_image = array_remove(category_image, ${cImg})\
         where id = ${id}";
-        db_1.db.none(sql, { categoryImage: req.query.categoryImage, id: categoryID })
+        db_1.db.none(sql, { cImg: req.query.cImg, id: categoryID })
             .then(() => {
             res.status(204).json(sysMessages_1.PublicInfo.infoDeleted());
         })

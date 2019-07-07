@@ -6,7 +6,7 @@ import { apiUploadCategoryImage } from "./apiUploadCategoryImage";
 import { apiDeleteCategory } from "./apiDeleteCategory";
 import { apiUpdateCategory } from "./apiUpdateCategory";
 import { apiGetCategoryMarketDetail } from "./apiGetCategoryMarketDetail";
-import { apiDownloadCategoryImage } from "./apiDownloadCategoryImage";
+import { apiDownloadcImg } from "./apiDownloadCategoryImage";
 import { jsonParser } from "../general/bodyParser";
 import { cacheCheck } from "../general/caching";
 import { apiDeleteCategoryImage } from "./apiDeleteCategoryImage";

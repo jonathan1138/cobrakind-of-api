@@ -4,7 +4,7 @@ const express_1 = require("express");
 const datastoreCheckCategoryFilters_1 = require("./datastoreCheckCategoryFilters");
 const datastoreGetCategories_1 = require("./datastoreGetCategories");
 const datastoreCreateCategory_1 = require("./datastoreCreateCategory");
-const datastoreUploadCategoryImage_1 = require("./datastoreUploadCategoryImage");
+const datastoreUploadcImg_1 = require("./datastoreUploadcImg");
 const datastoreDeleteCategory_1 = require("./datastoreDeleteCategory");
 const datastoreUpdateCategory_1 = require("./datastoreUpdateCategory");
 const datastoreGetCategoryMarketDetail_1 = require("./datastoreGetCategoryMarketDetail");
@@ -16,5 +16,5 @@ exports.categoryRouter.route("/")
 exports.categoryRouter.route("/:id")
     .get(datastoreGetCategoryMarketDetail_1.datastoreGetCategoryMarketDetail)
     .delete(datastoreDeleteCategory_1.datastoreDeleteCategory)
-    .post(datastoreUploadCategoryImage_1.datastoreUploadCategoryImage)
+    .post(datastoreUploadcImg_1.datastoreUploadcImg)
     .patch(bodyParser_1.jsonParser, datastoreUpdateCategory_1.datastoreUpdateCategory);

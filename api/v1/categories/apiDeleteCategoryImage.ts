@@ -5,14 +5,17 @@ import { CategoryFilters } from "../../../model/shared/categoryFilters";
 
 export const apiDeleteCategoryImage: RequestHandler = ( req, res, next ) => {
     const categoryID = req.params.id;
-    const categoryImage = new CategoryFilters(req.query).categoryImage;   
-    if (!categoryImage || !categoryID) {
+    const cImg = new CategoryFilters(req.query).cImg;   
+
+    console.log(cImg);
+
+    if (!cImg || !categoryID) {
         next(APIError.errMissingBody());
     } else {
         const sql = "update categories\
-        set category_image = array_remove(category_image, ${categoryImage})\
+        set category_image = array_remove(category_image, ${cImg})\
         where id = ${id}";
-        db.none(sql, {categoryImage: req.query.categoryImage, id: categoryID})
+        db.none(sql, {cImg: req.query.cImg, id: categoryID})
                 .then( () => {
                     res.status(204).json(PublicInfo.infoDeleted());
                 })

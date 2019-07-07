@@ -5,7 +5,7 @@ const subcats_1 = require("./subcats");
 class CategoryDetail extends categorySummary_1.CategorySummary {
     constructor(categoryData, subcatData) {
         super(categoryData);
-        this.categoryName = categoryData.categoryName;
+        this.cName = categoryData.cName;
         this.subcategories = subcatData.map((item) => new subcats_1.SubCat(item));
     }
 }

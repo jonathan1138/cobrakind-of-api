@@ -7,7 +7,7 @@ import { apiCors } from "./general/cors";
 import { apiValidation } from "./general/validation";
 import { userRouter } from "./users/apiUsers";
 import { categoryRouter } from "./categories/apiCategories";
-import { apiDownloadCategoryImage } from "./categories/apiDownloadCategoryImage";
+import { apiDownloadcImg } from "./categories/apiDownloadCategoryImage";
 import { apiErrorHandler } from "./general/errorHandling";
 import { urlEncodedParser, jsonParser } from "./general/bodyParser";
 import { apiTokenSignin } from "./auth/apiTokenSignin";
@@ -54,6 +54,6 @@ routerV1.post("/localsignup", jsonParser, apiLocalSignup);
 
 routerV1.post("/localsignin", jsonParser, apiLocalSignin);
 
-routerV1.get("/static/download/:id", apiDownloadCategoryImage);
+routerV1.get("/static/download/:id", apiDownloadcImg);
 
 routerV1.use(apiErrorHandler);

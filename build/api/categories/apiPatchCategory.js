@@ -7,7 +7,7 @@ exports.apiPatchCategory = (req, res, next) => {
     if (categoryIndex > -1) {
         const newCategory = {
             id: categoryID,
-            categoryName: req.body.categoryName || "",
+            cName: req.body.cName || "",
             categoryImg: req.body.categoryImg || ""
         };
         data_1.DataStore.categories[categoryIndex] = newCategory;
