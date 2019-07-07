@@ -28,7 +28,6 @@ exports.apiTokenSignin = (req, res, next) => {
     }
     firebaseAdmin.auth().verifyIdToken(req.body.idtoken).then(decodedToken => {
         const userID = decodedToken.uid;
-        // to do - expired UUID handling?
         db_1.db.one("select * from users where id = ${id}", { id: userID })
             .then((user) => {
             req.user = user;

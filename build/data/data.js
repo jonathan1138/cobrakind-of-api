@@ -9,4 +9,5 @@ class DataStore {
 }
 DataStore.categories = categories_json_1.default;
 DataStore.markets = markets_json_1.default;
+DataStore.UserAccounts = [];
 exports.DataStore = DataStore;

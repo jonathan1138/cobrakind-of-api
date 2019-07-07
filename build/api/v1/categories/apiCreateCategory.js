@@ -15,23 +15,35 @@ exports.apiCreateCategory = (req, res, next) => {
     if (!req.user) {
         next(sysMessages_1.APIError.errUnauthorizedAccess());
     }
-    const newCategory = {
-        id: v4_1.default(),
-        category_name: req.body.categoryName || "",
-        category_image: [],
-        user_id: req.user.id
-    };
-    db_1.db.none(db_1.pgp.helpers.insert(newCategory, undefined, "categories"))
-        .then(() => {
-        res.status(201).json(sysMessages_1.PublicInfo.infoCreated({ newCategory: newCategory }));
+    const receivedCatName = req.body.categoryName;
+    console.log(req.body.categoryName);
+    db_1.db.one("select * from categories where category_name = ${category_name} LIMIT 1", { category_name: receivedCatName })
+        .then((category_name) => {
+        next(sysMessages_1.APIError.errValueExists());
     })
         .catch(err => {
-        if (err instanceof db_1.pgp.errors.QueryResultError) {
-            next(sysMessages_1.APIError.errNotFound());
-        }
-        else {
-            console.log(err);
-            next(sysMessages_1.APIError.errInvalidQueryParameter());
-        }
+        console.log(err);
+        const newCategory = {
+            id: v4_1.default(),
+            category_name: req.body.categoryName || "",
+            category_image: [],
+            user_id: req.user.id
+        };
+        db_1.db.none(db_1.pgp.helpers.insert(newCategory, undefined, "categories"))
+            .then(() => {
+            res.status(201).json(sysMessages_1.PublicInfo.infoCreated({ newCategory: newCategory }));
+        })
+            .catch(err => {
+            if (err instanceof db_1.pgp.errors.QueryResultError) {
+                next(sysMessages_1.APIError.errNotFound());
+            }
+            else {
+                console.log(err);
+                next(sysMessages_1.APIError.errInvalidQueryParameter());
+            }
+        });
+    })
+        .catch(err => {
+        next(sysMessages_1.APIError.errSessionExpired());
     });
 };

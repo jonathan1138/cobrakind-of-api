@@ -17,6 +17,9 @@ export class APIError extends Error {
     static errInvalidQueryParameter(properties?: any, internalProperties?: any) {
         return new APIError("Invalid Query Parameter", "One of the query parameters is missing or corrupted", 400, properties, internalProperties);
     }
+    static errValueExists(properties?: any, internalProperties?: any) {
+        return new APIError("Value Exists", "One of the submitted parameters already exists; please try a different value", 400, properties, internalProperties);
+    }
     static errMissingBody(properties?: any, internalProperties?: any) {
         return new APIError("Missing Body", "Missing Data in Request Body", 400, properties, internalProperties);
     }

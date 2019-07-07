@@ -16,7 +16,19 @@ const errorHandling_1 = require("./general/errorHandling");
 const bodyParser_1 = require("./general/bodyParser");
 const apiTokenSignin_1 = require("./auth/apiTokenSignin");
 const apiSessionVerify_1 = require("./auth/apiSessionVerify");
+const apiLocalSignin_1 = require("./auth/apiLocalSignin");
+const apiLocalSignup_1 = require("./auth/apiLocalSignup");
 exports.routerV1 = express_1.Router();
+const rateLimit = require("express-rate-limit");
+// Enable if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
+// see https://expressjs.com/en/guide/behind-proxies.html
+// app.set('trust proxy', 1);
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100 // limit each IP to 100 requests per windowMs
+});
+//  apply to all requests
+exports.routerV1.use(limiter);
 // Home
 exports.routerV1.get("/", (req, res, next) => {
     res.send("Welcome to a CobraKind of API...");
@@ -30,5 +42,7 @@ exports.routerV1.use("/static", express.static(path_1.default.resolve("./", "pub
 exports.routerV1.use("/users", apiUsers_1.userRouter);
 exports.routerV1.use("/categories", apiCategories_1.categoryRouter);
 exports.routerV1.post("/tokensignin", bodyParser_1.urlEncodedParser, apiTokenSignin_1.apiTokenSignin);
+exports.routerV1.post("/localsignup", bodyParser_1.jsonParser, apiLocalSignup_1.apiLocalSignup);
+exports.routerV1.post("/localsignin", bodyParser_1.jsonParser, apiLocalSignin_1.apiLocalSignin);
 exports.routerV1.get("/static/download/:id", apiDownloadCategoryImage_1.apiDownloadCategoryImage);
 exports.routerV1.use(errorHandling_1.apiErrorHandler);
