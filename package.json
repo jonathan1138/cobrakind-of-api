@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@types/bcrypt": "^3.0.0",
+    "@types/faker": "^4.1.5",
+    "@types/googlemaps": "^3.36.6",
     "@types/jsonwebtoken": "^8.3.2",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
@@ -26,6 +28,7 @@
     "env-cmd": "^9.0.3",
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
+    "faker": "^4.1.0",
     "firebase-admin": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
